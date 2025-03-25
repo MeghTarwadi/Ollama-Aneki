@@ -1,0 +1,5 @@
+rich
+rich_pixels
+ollama
+llmware
+prompt_toolkit

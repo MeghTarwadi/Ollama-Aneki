@@ -1,5 +1,6 @@
 import subprocess
 import sys
+import os
 
 from rich import print as rprint
 from rich.prompt import Prompt
@@ -12,6 +13,7 @@ from utility.richtables import Tables
 from utility.runModel import RunModel
 from utility.textSearch import txt
 
+
 # Get data fromcustomes and colors
 auto_clear = bool((int(txt.search("auto_clear", "saves/default/config.conf"))))
 asciiart = txt.search("asciiart", "saves/default/config.conf")
@@ -22,7 +24,7 @@ user = ""
 
 # To clear the terminal
 if auto_clear:
-    subprocess.run(["clear"])
+    subprocess.run("cls", shell=True) if os.name == "nt" else subprocess.run(["clear"])
 
 # Loads asciiart and prints in table
 Tables.center_table(
@@ -62,14 +64,21 @@ while user != "exit":
         )
 
     if auto_clear:
-        subprocess.run(["clear"])
+        (
+            subprocess.run("cls", shell=True)
+            if os.name == "nt"
+            else subprocess.run(["clear"])
+        )
     if user == "run":
         history = True
         try:
             open(
-                txt.search("custom_path", "saves/default/config.conf")
-                + "/historylog.txt",
+                txt.pathOs(
+                    txt.search("custom_path", "saves/default/config.conf")
+                    + "/historylog.txt"
+                ),
                 "r",
+                encoding="utf-8",
             ).read().split("\n")[:-1]
         # If user has not created any custom model yet than it will skip the run and ask user to create one
         except:
@@ -80,9 +89,12 @@ while user != "exit":
             if mode == "read" or mode == "cont":
                 logs = (
                     open(
-                        txt.search("custom_path", "saves/default/config.conf")
-                        + "/historylog.txt",
+                        txt.pathOs(
+                            txt.search("custom_path", "saves/default/config.conf")
+                            + "/historylog.txt"
+                        ),
                         "r",
+                        encoding="utf-8",
                     )
                     .read()
                     .split("\n")[:-1]
@@ -109,9 +121,12 @@ while user != "exit":
             # This will provide all available models which are created by user
             available_option = (
                 open(
-                    txt.search("custom_path", "saves/default/config.conf")
-                    + "/model-list.txt",
+                    txt.pathOs(
+                        txt.search("custom_path", "saves/default/config.conf")
+                        + "/model-list.txt"
+                    ),
                     "r",
+                    encoding="utf-8",
                 )
                 .read()
                 .split("\n")[:-1]
@@ -131,9 +146,12 @@ while user != "exit":
             try:
                 available_option = (
                     open(
-                        txt.search("custom_path", "saves/default/config.conf")
-                        + "/model-list.txt",
+                        txt.pathOs(
+                            txt.search("custom_path", "saves/default/config.conf")
+                            + "/model-list.txt"
+                        ),
                         "r",
+                        encoding="utf-8",
                     )
                     .read()
                     .split("\n")[:-1]
@@ -146,9 +164,12 @@ while user != "exit":
                     "Model Name: ",
                     default=(
                         open(
-                            txt.search("custom_path", "saves/default/config.conf")
-                            + "/model-list.txt",
+                            txt.pathOs(
+                                txt.search("custom_path", "saves/default/config.conf")
+                                + "/model-list.txt"
+                            ),
                             "r",
+                            encoding="utf-8",
                         )
                         .read()
                         .split("\n")[:-1]
@@ -158,7 +179,7 @@ while user != "exit":
                 # With the mode it will call the function
                 call_fun(mode)
             except Exception as e:
-                # rprint(f"{alert}{e}")
+                rprint(f"{alert}{e}")
                 rprint(
                     f"{alert}No custome model found! Please create custome model using{alert.replace('[', '[/')} {highlight}'new'{highlight.replace('[', '[/')} {alert} command first!{alert.replace('[', '[/')}"
                 )

@@ -8,9 +8,9 @@ class AsciiMerge:
     # It will merge two ascii arts if they have been edited or been added in custom folder
     def merge():
         asciis1_path = txt.search("asciis1_path", "saves/default/config.conf")
-        arts = open(asciis1_path, "r").read().split("\n\n\n")
+        arts = open(asciis1_path, "r", encoding="utf-8").read().split("\n\n\n")
         ascii2_path = txt.search("ascii2_path", "saves/default/config.conf")
-        Aneki = open(ascii2_path, "r").read()
+        Aneki = open(ascii2_path, "r", encoding="utf-8").read()
 
         # Based on size which ever ascii is bigger in height it will remain first and other will
         # remain on right side if image art is bigger than text art than image will remain on left
@@ -46,7 +46,9 @@ class AsciiMerge:
             else:
                 file += ascii_art(Aneki, art) + "\n\n\n"
 
-        with open("saves/default/art.txt", "r") as txtfile:
+        with open(
+            txt.pathOs("saves/default/art.txt"), "r", encoding="utf-8"
+        ) as txtfile:
             # If generated ascii art is same as default ascii art
             if file == txtfile.read():
                 print("Default Ascii art detected, skipping...")
@@ -57,7 +59,11 @@ class AsciiMerge:
                     parents=True, exist_ok=True
                 )
                 with open(
-                    txt.search("custom_path", "saves/default/config.conf") + "/art.txt",
+                    txt.pathOs(
+                        txt.search("custom_path", "saves/default/config.conf")
+                        + "/art.txt"
+                    ),
                     "w",
+                    encoding="utf-8",
                 ) as customtxtfile:
                     customtxtfile.write(file)

@@ -1,16 +1,19 @@
 import random
+from utility.textSearch import txt
 
 
 class asciiArt:
     # It will load ascii art as string wthetehr its custom or default
-    def LoadArt(index, path):
+    def LoadArt(index, location):
         Ascii_Art = []
-        path = path + "/art.txt"
+        location = txt.pathOs(location + "/art.txt")
         try:
-            with open(path, "r") as file:
+            with open(location, "r", encoding="utf-8") as file:
                 Ascii_Art = file.read().split("\n\n\n\n")
         except:
-            with open("saves/default/art.txt", "r") as file:
+            with open(
+                txt.pathOs("saves/default/art.txt"), "r", encoding="utf-8"
+            ) as file:
                 Ascii_Art = file.read().split("\n\n\n\n")
 
         # will return ascii art randomly

@@ -1,7 +1,8 @@
 from pathlib import Path
 
+
 from PIL import Image
-from rich import print as rprint
+from utility.textSearch import txt
 
 from utility.richtables import Tables
 
@@ -13,10 +14,10 @@ class pngPix:
         self.highlight = highlight
         self.alert = alert
         self.normal = normal
-        self.dLowResPath = "saves/default/lowres/"
-        self.dHighResPath = "saves/default/exp/" + pngfolder + "/"
-        self.cLowResPath = paths + "/lowres/"
-        self.cHighResPath = paths + "/exp/"
+        self.dLowResPath = txt.pathOs("saves/default/lowres/")
+        self.dHighResPath = txt.pathOs("saves/default/exp/" + pngfolder + "/")
+        self.cLowResPath = txt.pathOs(paths + "/lowres/")
+        self.cHighResPath = txt.pathOs(paths + "/exp/")
         self.emotions = [
             "afraid",
             "anger",
