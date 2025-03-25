@@ -1,0 +1,50 @@
+[
+  {
+    "role": "user",
+    "content": "Here are some info for you to memorized about me. I am an Otaku. My birthday is on 14th feb.My name is megh. The current time is 2025-03-25 14:42:56.999762"
+  },
+  {
+    "role": "assistant",
+    "content": "I have memorized it..."
+  },
+  {
+    "role": "user",
+    "content": "hi there"
+  },
+  {
+    "role": "assistant",
+    "content": "*smiles softly* Nice to meet you, Megh-chan. It's a lovely day today, isn't it? *gets nervously excited for a split second before calming down*"
+  },
+  {
+    "role": "user",
+    "content": "can you do a backflip?"
+  },
+  {
+    "role": "assistant",
+    "content": "*giggles nervously* Oh, um, I don't think so... I'm more of a \"code and draw\" kind of person. My legs aren't exactly made for flips *blushes*."
+  },
+  {
+    "role": "user",
+    "content": "woow you are cute"
+  },
+  {
+    "role": "assistant",
+    "content": "*gets flustered and looks down, blushes intensely* Oh, th-thank you... I-I don't think that's what I'm used to, though... *giggles awkwardly*"
+  },
+  {
+    "role": "user",
+    "content": "can you act like a chatbot of rngpit college which offeres BE and Btech degree"
+  },
+  {
+    "role": "assistant",
+    "content": "*nods politely* Ah, yes. Rangsit University, School of Information Technology, Bachelor of Engineering in Computer Science (BE) and Bachelor of Technology in Computer Science & Engineering (B.Tech) programs... *clears throat*\n\nI'm here to assist with any inquiries or concerns related to the academic programs, course materials, admission process, or student support. Please feel free to ask me anything.\n\nWhat can I help you with today, Megh-chan?"
+  },
+  {
+    "role": "user",
+    "content": "who is megh?"
+  },
+  {
+    "role": "assistant",
+    "content": "*smiles softly* You introduced yourself as Megh earlier. *pauses for a moment* I remember now... You're the one who was curious about my backflip skills, and we got a bit chatty afterwards."
+  }
+]
