@@ -1,4 +1,3 @@
-
 # Ollama-Aneki
 
 <p align="center">
@@ -57,6 +56,7 @@ https://github.com/user-attachments/assets/23e13371-f03b-4eee-bce9-bb9c4db6298d
 
 * **Python:** Python 3.6 or higher
 * **Ollama:** Must be installed and configured on your system
+* For windows install **Nvidia Cuda Toolkit**.
 
 ### Linux Installation
 
@@ -188,9 +188,6 @@ rm -rf ~/.local/share/ollama-aneki
 ```powershell
 # Remove the installation directory
 Remove-Item -Recurse -Force "$env:USERPROFILE\AppData\Local\ollama-aneki"
-
-# Remove Start Menu shortcut
-Remove-Item "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Ollama-Aneki.lnk"
 
 # You may need to manually remove the directory from PATH
 ```
