@@ -101,6 +101,7 @@ After installation:
 
 1. Restart your terminal/command prompt
 2. You can run `aneki` from anywhere in your command prompt or PowerShell
+3. If it doesnt recognize aneki than you may add `C:\Users\<USERNAME>\AppData\Local\ollama-aneki` in PATH
 
 ## Usage
 
