@@ -55,6 +55,8 @@ Before installing Ollama-Aneki, make sure you have:
    ```powershell
    aneki help
    ```
+4. If it doesnt recognize aneki than you may add `C:\Users\<USERNAME>\AppData\Local\ollama-aneki` in PATH
+
 
 ## Troubleshooting
 
