@@ -105,11 +105,22 @@ echo Creating aneki command script...
 ) > "%INSTALL_DIR%\aneki.bat"
 
 :: Add the installation directory to user PATH
-echo Adding installation directory to PATH...
-for /f "tokens=2*" %%A in ('reg query "HKCU\Environment" /v PATH 2^>nul') do set "OLDPATH=%%B"
-if not defined OLDPATH set "OLDPATH="
-setx PATH "%OLDPATH%;%INSTALL_DIR%"
+echo Adding installation directory to user PATH...
 
+set "INSTALL_FLAG="
+for /f "tokens=2*" %%A in ('reg query "HKCU\Environment" /v PATH 2^>nul') do (
+    echo %%B | find /I "%INSTALL_DIR%" >nul && set "INSTALL_FLAG=1"
+    set "OLDPATH=%%B"
+)
+
+if not defined OLDPATH set "OLDPATH="
+
+if not defined INSTALL_FLAG (
+    echo PATH does not contain install dir. Adding...
+    setx PATH "%OLDPATH%;%INSTALL_DIR%"
+) else (
+    echo PATH already contains install dir. Skipping add.
+)r
 
 :: Create a shortcut in the Start Menu
 echo Creating Start Menu shortcut...
