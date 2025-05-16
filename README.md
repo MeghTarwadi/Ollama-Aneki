@@ -1,80 +1,213 @@
 
-![Ollama-Aneki1](https://github.com/user-attachments/assets/e855a33f-0d49-41de-991b-affb7ed9333e)
+# Ollama-Aneki
 
-Ollama-Aneki is a sleek terminal user interface (TUI) designed to enhance the experience of using the Ollama CLI. With its intuitive and visually appealing design, it transforms the CLI into a more user-friendly and feature-rich tool.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/e855a33f-0d49-41de-991b-affb7ed9333e" alt="Ollama-Aneki Logo" width="600">
+</p>
+<p align="center">
+  <b>A beautiful terminal UI for Ollama with emotion visualization and custom model management</b><br>
+  <i>Transform your CLI into a visually appealing, feature-rich tool for interacting with Ollama models</i>
+</p>
+<p align="center">
+  <a href="#features">Features</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#usage">Usage</a> •
+  <a href="#configuration">Configuration</a> •
+  <a href="#customization">Customization</a> •
+  <a href="#contributing">Contributing</a>
+</p>
+## Features
 
+### 🔄 Enhanced Chat Management
 
-# Features
-
-#### 1. **Enhanced Chat Management**
-   - **History View**: Easily access your ***past conversations*** and pick up right where you left off. Conversation history is stored in JSON format.
-   - **Continue Chats**: Seamlessly continue conversations without losing context.
-
+* **History View:** Easily browse through past conversations and pick up where you left off
+* **Continue Chats:** Seamlessly continue conversations without losing context
+* **Automatic Saving:** Conversations are stored in JSON format for easy recall
 
 https://github.com/user-attachments/assets/b1120195-777a-45ba-9373-2b0a213c64cb
 
+### 😊 Emotion Generation Mode
 
-#### 2. **Emotion Generation Mode**
-   - Analyzes the emotions of the conversation and provides a corresponding PNG from 38 predefined emotion files, such as:
-     - afraid, anger, joy, surprised, sadness... and many more.
-   - PNGs are made to visually reflect the emotional tone of the chat, enhancing the user experience.
-
+* **Visual Emotions:** Analyzes the emotional tone of responses and displays corresponding high-resolution PNGs
+* **Rich Expression Library:** Choose from 38 predefined emotion expressions:
+  * afraid, anger, annoyed, blush, catty, coffee, confused, crying, curious, default, demon, disapproval, disgust, dizzy, embarrassed, evil, excited, happy, heart, joy, laughing, love, music, naughty, pain, peaceful, pleased, proud, sad, scared, shocked, shy, sleepy, smug, surprised, sweat, thinking, wink
+* **Rich Terminal Display:** PNGs render beautifully in supported terminals
 
 https://github.com/user-attachments/assets/4a601fdd-a863-4bb1-9298-485fce102e4b
 
+### 🤖 Custom Model Building
 
-#### 3. **Custom Model Building**
-   - Allows users to create ***custom models*** based on existing ones with ***personalized behavior***.
-
+* **Create Personal Models:** Build custom models based on existing ones
+* **Personalized Behavior:** Define unique system prompts for your models
+* **Memory Management:** Add personalized information to your model's memory
+* **No Duplication:** Uses the base model efficiently without duplicating storage
 
 https://github.com/user-attachments/assets/23e13371-f03b-4eee-bce9-bb9c4db6298d
 
+### ⚙️ Fully Configurable
 
-#### 4. **Configurable Settings**
-   - ***Highly customizable*** configuration options to tailor the interface and features to your preferences:
-     ```ini
-     alert = [red]                                   // Alerts color
-     asciiart = [yellow]                             // ASCII art color
-     asciiart_index = -1                             // Use -1 for random ASCII art or specify an index for fixed ASCII art
-     ascii2_path = saves/default/ascii2.txt          // Path to single-string ASCII art
-     asciis1_path = saves/default/ascii1.txt         // Path to ASCII art list; separated by three line breaks
-     ask_for_Topic = 1                               // Set to 1 to ask for a topic name; 0 saves history based on date and time
-     auto_clear = 1                                  // Set to 0 to disable auto-clear; use an integer to enable clearing the console
-     box_borders = DOUBLE                            // Box style: DOUBLE, HEAVY, SIMPLE, ROUNDED, or SQUARE
-     box_width = 0                                   // Set to 0 for maximum terminal width or specify an integer for a fixed width
-     custom_path = saves/custom                      // Use an absolute path if custom saves are stored in a different location
-     emotion_generation = 1                          // Set to 0 to disable emotion generation in tables; 1 enables it
-     exit_code = die                                 // Exit code to quit conversation; not case-sensitive
-     highlight = [blue]                              // Highlighted areas color
-     max_respose_size = 500                          // Maximum response size in alphabets to be fed for emotion regeneration
-     memory_length = 10                              // Conversation memory length; higher value may slow down performance
-     normal = [white]                                // Default color for majority of content
-     pngfolder = Aneki                               // PNG emotion groups: "Aneki," "Makima," or "Makima white background"
-     reprint_everytime = 0                           // Reprints the entire conversation after prompt generation if terminal size changes
-     user_conversation = >>                          // String displayed when the user replies
-     width = 40                                      // Width for pixel art emotions; resize PNG accordingly
-     ```
+* **Rich Terminal UI:** Beautiful tables, colors, and borders that work in most modern terminals
+* **ASCII Art:** Custom banners and art with random or fixed display options
+* **Appearance Settings:** Customize colors, borders, and layout to your preferences
+* **Behavior Control:** Fine-tune how conversations are handled and saved
 
----
+## Installation
 
-# Why Use Ollama-Aneki?
+### Prerequisites
 
-- **Improved Productivity**: Save time by efficiently managing conversations.
-- **Better Experience**: The TUI adds a touch of elegance and simplicity to your interactions.
-- **Exclusive Features**: Access functionalities like history, emotion generation, and custom model creation not available in the standard Ollama CLI by default.
+* **Python:** Python 3.6 or higher
+* **Ollama:** Must be installed and configured on your system
 
-# Contributions
-We welcome contributions to improve Ollama-Aneki. Feel free to:
-- Submit issues
-- Suggest new features
-- Create pull requests
+### Linux Installation
 
----
+```bash
+# Clone the repository
+git clone https://github.com/MeghTarwadi/ollama-aneki.git
+
+# Navigate to the directory
+cd ollama-aneki
+
+# Run the setup script
+chmod +x setup.sh
+./setup.sh
+```
+
+The setup script will:
+
+1. Create a virtual environment for dependencies
+2. Install required Python packages
+3. Set up necessary directories and configuration files
+4. Create a system-wide executable command (`aneki`)
+
+After installation, you can run the `aneki` command from anywhere in your terminal!
+
+### Windows Installation
+
+```powershell
+# Install Git if not already installed (using winget)
+winget install Git.Git
+
+# Close and reopen terminal, then run:
+git clone https://github.com/MeghTarwadi/ollama-aneki.git C:\temp\ollama-aneki
+
+# Navigate to the directory
+cd C:\temp\ollama-aneki
+
+# Run the setup script
+.\setup.bat
+```
+
+After installation:
+
+1. Restart your terminal/command prompt
+2. You can run `aneki` from anywhere in your command prompt or PowerShell
+
+## Usage
+
+### Basic Commands
+
+* `aneki` - Launch the main interface
+* `aneki run [model_name]` - Run a specific model
+* `aneki new` - Create a new custom model
+* `aneki history` - View past model configurations
+* `aneki help` - Display help information
+* `aneki asciiart` - Merge ASCII arts for custom display
+* `aneki pixelize` - Change emotional model files
+
+### Creating a Custom Model
+
+1. Run `aneki new`
+2. Enter base model name (e.g., `phi3.5`)
+3. Choose a name for your custom model
+4. Set behavior instructions for your model
+5. Optionally add information to your model's memory
+
+### Chat Management
+
+* Inside a conversation, type your exit code (default: `die`) to quit
+* Use `aneki run read` to view past conversations
+* Use `aneki run cont` to continue a previous conversation
+
+### Quitting Properly
+
+* To exit a conversation: type your exit code (default: `die`)
+* To interrupt the program: press `Ctrl+C` - this will safely exit and return you to your original directory
+
+## Configuration
+
+The configuration file is located at `saves/default/config.conf`. Here are some key settings:
+
+```ini
+# Appearance settings
+alert = [red]                # Color for alerts
+asciiart = [yellow]          # Color for ASCII art  
+normal = [white]             # Default text color
+highlight = [blue]           # Color for highlighted text
+box_borders = DOUBLE         # Box style: DOUBLE, HEAVY, SIMPLE, ROUNDED, SQUARE
+box_width = 0                # Terminal width (0 = auto)
+
+# Behavior settings
+auto_clear = 1               # Clear terminal automatically (1 = yes, 0 = no)
+emotion_generation = 1       # Enable emotion visualization (1 = yes, 0 = no)
+exit_code = die              # Command to exit conversation
+memory_length = 10           # Number of messages to keep in memory
+
+# Content settings
+pngfolder = Aneki            # Emotion style ("Aneki", "Makima", "Makima white background")
+custom_path = saves/custom   # Custom data storage location
+width = 40                   # Width for pixel art emotions
+height = 30                  # Height for pixel art emotions
+```
+
+## Customization
+
+### Adding Custom Emotions
+
+Place your PNG files in the `saves/custom/exp/` directory with the emotion name as filename (e.g., `happy.png`).
+
+### Creating Custom ASCII Art
+
+1. Edit the ASCII art files in `saves/default/ascii1.txt` or `saves/default/ascii2.txt`
+2. Run `aneki asciiart` to merge the arts
+3. Your custom art will appear in the banner
+
+## Uninstallation
+
+### Linux Uninstallation
+
+```bash
+# Remove the executable
+sudo rm /usr/local/bin/aneki
+
+# Remove the installation directory
+rm -rf ~/.local/share/ollama-aneki
+```
+
+### Windows Uninstallation
+
+```powershell
+# Remove the installation directory
+Remove-Item -Recurse -Force "$env:USERPROFILE\AppData\Local\ollama-aneki"
+
+# Remove Start Menu shortcut
+Remove-Item "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Ollama-Aneki.lnk"
+
+# You may need to manually remove the directory from PATH
+```
+
+## Contributing
+
+We welcome contributions to improve Ollama-Aneki! Feel free to:
+
+* Report issues
+* Suggest new features
+* Create pull requests
+* Share your custom configurations and ASCII art
 
 ## License
-This project is licensed under the [MIT License](LICENSE).
+
+This project is licensed under the MIT License.
 
 ---
 
 **Experience the beauty of simplicity with Ollama-Aneki. Elevate your CLI game today!**
-

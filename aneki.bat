@@ -1,37 +1,28 @@
 @echo off
+setlocal
 
-:: Change directory to C:\
-cd C:\
+:: Save the original directory
+set "ORIGINAL_DIR=%CD%"
 
-:: Check if Ollama-Aneki folder exists, if not, clone it from GitHub
-if not exist "C:\Ollama-Aneki" (
-    echo Creating directory and cloning repository...
-    mkdir C:\Ollama-Aneki
-    git clone https://github.com/MeghTarwadi/Ollama-Aneki C:\Ollama-Aneki
-    setx PATH "%PATH%;C:\Ollama-Aneki"
-    echo "Ollama-Aneki installed and environment variable set successfully!"
-    echo Installing dependencies...
-    :: Install dependencies (requirements.txt)
-    pip install -r requirements.txt
+:: Installation directory
+set "INSTALL_DIR=%USERPROFILE%\AppData\Local\ollama-aneki"
+
+:: Handle Ctrl+C and errors gracefully
+:: The following provides a cleaner exit mechanism
+if not exist "%INSTALL_DIR%" (
+    echo Installation directory not found. Please run setup.bat first.
+    exit /b 1
 )
 
-:: Change to the Ollama-Aneki directory
-cd C:\Ollama-Aneki
+:: Change to the installation directory and activate the virtual environment
+cd /d "%INSTALL_DIR%" || (echo Installation directory not found. Please reinstall. & exit /b 1)
+call venv\Scripts\activate.bat || (echo Virtual environment not found. Please reinstall. & exit /b 1)
 
+:: Run the application with all arguments passed to this script
+python run.py %*
 
-:: Check the number of arguments passed
-IF "%1"=="" (
-    :: No arguments passed
-    echo No arguments passed. Running run.py without arguments...
-    python run.py
-) ELSE IF "%2"=="" (
-    :: One argument passed
-    echo One argument passed: %1. Running run.py with argument...
-    python run.py %1
-) ELSE (
-    :: Two or more arguments passed
-    echo Two arguments passed: %1 %2. Running run.py with both arguments...
-    python run.py %1 %2
-)
+:: Return to the original directory and deactivate the virtual environment
+cd /d "%ORIGINAL_DIR%"
+call venv\Scripts\deactivate.bat
 
-pause
+endlocal
