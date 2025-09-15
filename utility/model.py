@@ -72,10 +72,12 @@ class createModel:
         text += f"\n{alert}2. Creating a new model won’t erase your current one (unless the names are the same)."
         text += f"\n{normal}3. It will use not duplicate the model instead it will use the existing model. Hence memory will be saved."
         text += f"\n{alert}4. Behavior of model is adviced to keep simple\n\n"
-
-        #   In model you sepcifie your predonwloaded model like mistral phi3.5 ollama3.2 etc
-        model = Prompt().ask("Name of the existing model ", default="phi3.5")
-
+        #   In model you sepcifie your predonwloaded model like mistral phi3.5 llama3.2 etc
+        availables=[model.model for model in ollama.list().models]
+        if availables:
+            model = Prompt().ask("Name of the existing model ", default=availables[0] , choices=availables)
+        else:
+            raise
         #   Name will be the parametere that you model will be named after
         name = Prompt().ask("Name for the new model ", default="aneki").lower()
 

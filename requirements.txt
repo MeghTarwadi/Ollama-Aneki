@@ -3,3 +3,6 @@ rich_pixels
 ollama
 llmware
 prompt_toolkit
+duckduckgo_search
+bs4
+ddgs

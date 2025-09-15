@@ -4,6 +4,7 @@ import os
 
 from rich import print as rprint
 from rich.prompt import Prompt
+import ollama
 
 from tui.asciart import asciiArt
 from tui.ascimerge import AsciiMerge
@@ -160,6 +161,8 @@ while user != "exit":
                     available_option.append("read")
                     available_option.append("cont")
                 # Did the same process as above to get available opt.
+
+                available_option.extend([model.model for model in ollama.list().models])
                 mode = Prompt.ask(
                     "Model Name: ",
                     default=(
